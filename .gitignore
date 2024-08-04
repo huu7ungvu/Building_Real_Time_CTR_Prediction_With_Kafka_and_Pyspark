@@ -162,4 +162,3 @@ cython_debug/
 #.idea/
 
 setup_spark/book_data/project_data/output
-/prj_imgs
