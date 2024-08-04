@@ -90,7 +90,7 @@ if __name__ == "__main__":
         .writeStream \
         .trigger(processingTime = "5 seconds")\
         .outputMode("append") \
-        .option("path", "/opt/spark/apps/project/output")\
+        .option("path", "/opt/spark/data/project_data/output")\
         .option("checkpointLocation", "opt/spark/data/kafka_stream_test_out/chk") \
         .format("csv") \
         .start()
