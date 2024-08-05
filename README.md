@@ -60,7 +60,7 @@ This process demonstrates the effectiveness of using Apache Spark for large-scal
 - Docker: Ensure Docker is installed on your system.
 - Make: Ensure the make package is install on window or linux.
 ## Set up Kafka cluster on Docker
-Open terminal, change directory to *setup_kafka* folder and run bash command to run kafka cluster containers.
+Open terminal, navigate to the directory *setup_kafka* folder and run bash command to run kafka cluster containers.
 ```bash
    docker-compose up --build
 ```
@@ -74,12 +74,30 @@ Create a topic in kafka cluster.
 /opt/kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 2 --partitions 1 --topic cte_queue
 ```
 ## Set up Spark cluster on Docker
-Open terminal, change directory to *setup_spark* folder and run bash command to run spark cluster containers.
+Open terminal, navigate to the directory change directory to *setup_spark* folder and run bash command to run spark cluster containers.
 ```bash
    make run
 ```
 Ensure kafka cluster run successfully.
-## Run System
+## Run Real-time System
+To simulate real-time data streaming, we have implemented producer and consumer scripts using Kafka. The producer script is responsible for sending data to a Kafka topic, while the consumer script reads the data from the topic and processes it using Spark.
+
+### Running the Producer Script.
+Open terminal, navigate to the directory to *setup_kafka* folder. Execute the producer script with bash command
+```bash
+   python producer.py
+```
+
+### Running the Consumer Script.
+Open terminal, navigate to the directory to *setup_spark* folder. Execute the producer script with bash command
+```bash
+   make submit app=consumer.py
+```
+
+### Monitoring and Logging
+Kafka Logs and Console: Check the Kafka logs to ensure that messages are being produced and consumed correctly. And on console of producer, message will print
+
+Spark UI and Console: Access the Spark UI to monitor job execution and performance metrics. And on console of consumer, message will print too.
 
 # Credits
 ## Acknowledgments
